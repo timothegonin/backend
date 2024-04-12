@@ -1,6 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
+
+mongoose
+	.connect(
+		"mongodb+srv://" +
+			process.env.API_USER +
+			":" +
+			process.env.API_USER_PASS +
+			"@cluster0.p9ahqrr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+		{ useNewUrlParser: true, useUnifiedTopology: true }
+	)
+	.then(() => console.log("Connexion à MongoDB réussie !"))
+	.catch(() => console.log("Connexion à MongoDB échouée !"));
 
 app.use(express.json());
 
