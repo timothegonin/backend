@@ -7,7 +7,7 @@ const stuffControllers = require("../controllers/stuff");
 router.get("/", auth, stuffControllers.getAllStuff);
 router.post("/", auth, multer, stuffControllers.createThing);
 router.get("/:id", auth, stuffControllers.getOneThing);
-router.put("/:id", auth, stuffControllers.modifyThing);
+router.put("/:id", auth, multer, stuffControllers.modifyThing);
 router.delete("/:id", auth, stuffControllers.deleteThing);
 
 module.exports = router;
